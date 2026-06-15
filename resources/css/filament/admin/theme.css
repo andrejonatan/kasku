@@ -1,0 +1,60 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@config './tailwind.config.js';
+
+/* -------------------------------------------------- */
+/* 1. KUSTOMISASI HALAMAN LOGIN                       */
+/* -------------------------------------------------- */
+
+/* Mengubah background halaman login jadi Gradient modern */
+.fi-simple-page {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%) !important;
+}
+
+/* Membuat Kotak/Card Login menjadi Glassmorphism (Efek Kaca) */
+.fi-simple-main-card {
+    border-radius: 20px !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mengubah warna teks judul di halaman login agar putih bersinar */
+.fi-simple-header-heading {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.05em;
+}
+
+/* Mengubah warna label form (Email & Password) di halaman login */
+.fi-fo-field-wrp-label label {
+    color: #cbd5e1 !important;
+}
+
+
+/* -------------------------------------------------- */
+/* 2. KUSTOMISASI HALAMAN DASHBOARD                   */
+/* -------------------------------------------------- */
+
+/* Membuat sudut (border-radius) Widget & Card di Dashboard lebih rounded/halus */
+.fi-wi-widget, 
+.fi-section, 
+.fi-ta-ctn {
+    border-radius: 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+    overflow: hidden;
+}
+
+/* Memberikan efek gradient soft pada Widget Angka/Statistik */
+.fi-wi-stats-overview-stat-card {
+    background: linear-gradient(to bottom right, #ffffff, #f8fafc) !important;
+    border-left: 4px solid #4f46e5 !important; /* Aksen garis warna Indigo di kiri widget */
+}
+
+/* Jika dalam mode dark mode, sesuaikan warna widget statistik */
+.dark .fi-wi-stats-overview-stat-card {
+    background: linear-gradient(to bottom right, #1e293b, #0f172a) !important;
+    border-left: 4px solid #6366f1 !important;
+}
