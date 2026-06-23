@@ -1,6 +1,6 @@
 # KASKU - Aplikasi Pengelolaan Kas & Transaksi
 
-KASKU adalah aplikasi manajemen keuangan berbasis web yang dibangun menggunakan **Laravel 11** dan **Filament Admin Panel**. Aplikasi ini dirancang untuk memudahkan pencatatan, pemantauan, dan pengelolaan transaksi keuangan seperti Uang Kas dan Iuran Kegiatan (contoh: Study Tour).
+KASKU adalah aplikasi manajemen keuangan berbasis web yang dibangun menggunakan **Laravel 13** dan **Filament Admin Panel versi 5**. Aplikasi ini dirancang untuk memudahkan pencatatan, pemantauan, dan pengelolaan transaksi keuangan seperti Uang Kas dan Iuran Kegiatan (contoh: Study Tour).
 
 ## 🚀 Fitur Utama
 
@@ -14,9 +14,9 @@ KASKU adalah aplikasi manajemen keuangan berbasis web yang dibangun menggunakan 
 
 ## 🛠️ Teknologi yang Digunakan
 
-- [PHP 8.2+](https://www.php.net/)
-- [Laravel 11.x](https://laravel.com/)
-- [FilamentPHP v3](https://filamentphp.com/) (Admin Panel)
+- [PHP 8.3+](https://www.php.net/)
+- [Laravel 13](https://laravel.com/)
+- [FilamentPHP v5](https://filamentphp.com/) (Admin Panel)
 - [MySQL](https://www.mysql.com/) (Database)
 - [Tailwind CSS](https://tailwindcss.com/) (Styling)
 
