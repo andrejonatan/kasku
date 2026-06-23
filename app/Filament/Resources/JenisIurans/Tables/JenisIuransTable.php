@@ -14,8 +14,8 @@ class JenisIuransTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_iuran')
-                    ->sortable(),
+                // TextColumn::make('id_iuran')
+                //     ->sortable(),
                 TextColumn::make('nama_iuran')
                     ->searchable(),
                 TextColumn::make('nominal')
@@ -26,11 +26,13 @@ class JenisIuransTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update JenisIuran')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete JenisIuran')),
                 ]),
             ]);
     }

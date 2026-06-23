@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Periodes\Pages;
 
 use App\Filament\Resources\Periodes\PeriodeResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListPeriodes extends ListRecords
@@ -12,8 +12,8 @@ class ListPeriodes extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return auth()->user()->can('create Periode')
+        ? [Actions\CreateAction::make()]
+        : [];
     }
 }

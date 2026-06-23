@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Transaksis\Pages;
 
 use App\Filament\Resources\Transaksis\TransaksiResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListTransaksis extends ListRecords
@@ -12,8 +12,8 @@ class ListTransaksis extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return auth()->user()->can('create Transaksi')
+        ? [Actions\CreateAction::make()]
+        : [];
     }
 }

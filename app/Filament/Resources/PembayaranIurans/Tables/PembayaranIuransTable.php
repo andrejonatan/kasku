@@ -14,8 +14,8 @@ class PembayaranIuransTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_pembayaran')
-                    ->sortable(),
+                // TextColumn::make('id_pembayaran')
+                //     ->sortable(),
 
                 TextColumn::make('user.nama_user')
                     ->sortable()
@@ -42,11 +42,13 @@ class PembayaranIuransTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update PembayaranIuran')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete PembayaranIuran')),
                 ]),
             ]);
     }

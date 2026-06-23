@@ -8,13 +8,14 @@ use App\Filament\Resources\JenisIurans\Pages\ListJenisIurans;
 use App\Filament\Resources\JenisIurans\Schemas\JenisIuranForm;
 use App\Filament\Resources\JenisIurans\Tables\JenisIuransTable;
 use App\Models\JenisIuran;
+use app\Filament\Resources\BaseResource;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class JenisIuranResource extends Resource
+class JenisIuranResource extends BaseResource
 {
     protected static ?string $model = JenisIuran::class;
 

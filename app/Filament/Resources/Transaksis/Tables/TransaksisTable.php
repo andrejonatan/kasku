@@ -14,8 +14,8 @@ class TransaksisTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_transaksi')
-                    ->sortable(),
+                // TextColumn::make('id_transaksi')
+                //     ->sortable(),
 
                 TextColumn::make('kategori.nama_kategori')
                     ->sortable()
@@ -40,11 +40,13 @@ class TransaksisTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                ->visible(fn () => auth()->user()->can('update Transaksi'))
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete Transaksi')),
                 ]),
             ]);
     }

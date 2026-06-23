@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\Jabatans\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 
 class JabatansTable
 {
@@ -14,9 +14,8 @@ class JabatansTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_jabatan')
-                    ->sortable(),
-
+                // TextColumn::make('id_jabatan')
+                //     ->sortable(),
                 TextColumn::make('nama_jabatan')
                     ->searchable(),
             ])
@@ -24,11 +23,13 @@ class JabatansTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update Jabatan')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete Jabatan')),
                 ]),
             ]);
     }

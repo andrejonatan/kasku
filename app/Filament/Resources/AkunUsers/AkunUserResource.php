@@ -7,6 +7,7 @@ use App\Filament\Resources\AkunUsers\Pages\EditAkunUser;
 use App\Filament\Resources\AkunUsers\Pages\ListAkunUsers;
 use App\Filament\Resources\AkunUsers\Schemas\AkunUserForm;
 use App\Filament\Resources\AkunUsers\Tables\AkunUsersTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\AkunUser;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -14,7 +15,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class AkunUserResource extends Resource
+class AkunUserResource extends BaseResource
 {
     protected static ?string $model = AkunUser::class;
 

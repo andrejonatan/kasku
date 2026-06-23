@@ -13,6 +13,6 @@ class Jabatan extends Model
     public $timestamps = false;
 
     protected $fillable = [
-    'nama_jabatan',
+        'nama_jabatan',
     ];
 }

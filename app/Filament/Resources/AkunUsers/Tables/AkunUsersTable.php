@@ -29,7 +29,7 @@ class AkunUsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('id_jabatan')
+                TextColumn::make('jabatan.nama_jabatan')
                     ->numeric()
                     ->sortable(),
             ])
@@ -37,11 +37,13 @@ class AkunUsersTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update AkunUser')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                    ->visible(fn () => auth()->user()->can('delete AkunUser')),
                 ]),
             ]);
     }

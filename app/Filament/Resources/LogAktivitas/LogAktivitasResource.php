@@ -7,14 +7,14 @@ use App\Filament\Resources\LogAktivitas\Pages\EditLogAktivitas;
 use App\Filament\Resources\LogAktivitas\Pages\ListLogAktivitas;
 use App\Filament\Resources\LogAktivitas\Schemas\LogAktivitasForm;
 use App\Filament\Resources\LogAktivitas\Tables\LogAktivitasTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\LogAktivitas;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class LogAktivitasResource extends Resource
+class LogAktivitasResource extends BaseResource
 {
     protected static ?string $model = LogAktivitas::class;
 

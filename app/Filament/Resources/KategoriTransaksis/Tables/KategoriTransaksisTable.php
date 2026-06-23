@@ -14,9 +14,8 @@ class KategoriTransaksisTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_kategori')
-                    ->sortable(),
-
+                // TextColumn::make('id_kategori')
+                //     ->sortable(),
                 TextColumn::make('nama_kategori')
                     ->searchable(),
 
@@ -27,11 +26,13 @@ class KategoriTransaksisTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update KategoriTransaksi')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                    ->visible(fn () => auth()->user()->can('delete KategoriTransaksi')),
                 ]),
             ]);
     }

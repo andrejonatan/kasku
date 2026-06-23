@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\PembayaranIurans\Pages;
 
 use App\Filament\Resources\PembayaranIurans\PembayaranIuranResource;
-use Filament\Actions\DeleteAction;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPembayaranIuran extends EditRecord
@@ -12,8 +12,8 @@ class EditPembayaranIuran extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return auth()->user()->can('delete PembayaranIuran')
+        ? [Actions\DeleteAction::make()]
+        : [];
     }
 }

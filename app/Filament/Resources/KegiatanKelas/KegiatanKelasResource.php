@@ -7,14 +7,14 @@ use App\Filament\Resources\KegiatanKelas\Pages\EditKegiatanKelas;
 use App\Filament\Resources\KegiatanKelas\Pages\ListKegiatanKelas;
 use App\Filament\Resources\KegiatanKelas\Schemas\KegiatanKelasForm;
 use App\Filament\Resources\KegiatanKelas\Tables\KegiatanKelasTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\KegiatanKelas;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class KegiatanKelasResource extends Resource
+class KegiatanKelasResource extends BaseResource
 {
     protected static ?string $model = KegiatanKelas::class;
 

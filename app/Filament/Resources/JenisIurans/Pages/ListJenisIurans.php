@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\JenisIurans\Pages;
 
 use App\Filament\Resources\JenisIurans\JenisIuranResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListJenisIurans extends ListRecords
@@ -12,8 +12,10 @@ class ListJenisIurans extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return auth()->user()->can('create JenisIuran')
+            ? [
+                Actions\CreateAction::make(),
+            ]
+            : [];
     }
 }

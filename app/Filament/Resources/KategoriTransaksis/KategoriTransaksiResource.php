@@ -7,14 +7,14 @@ use App\Filament\Resources\KategoriTransaksis\Pages\EditKategoriTransaksi;
 use App\Filament\Resources\KategoriTransaksis\Pages\ListKategoriTransaksis;
 use App\Filament\Resources\KategoriTransaksis\Schemas\KategoriTransaksiForm;
 use App\Filament\Resources\KategoriTransaksis\Tables\KategoriTransaksisTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\KategoriTransaksi;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class KategoriTransaksiResource extends Resource
+class KategoriTransaksiResource extends BaseResource
 {
     protected static ?string $model = KategoriTransaksi::class;
 

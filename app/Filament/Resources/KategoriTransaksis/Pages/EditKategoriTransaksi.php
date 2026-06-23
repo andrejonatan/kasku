@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\KategoriTransaksis\Pages;
 
 use App\Filament\Resources\KategoriTransaksis\KategoriTransaksiResource;
-use Filament\Actions\DeleteAction;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditKategoriTransaksi extends EditRecord
@@ -12,8 +12,8 @@ class EditKategoriTransaksi extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return auth()->user()->can('delete JenisIuran')
+        ? [Actions\DeleteAction::make()]
+        : [];
     }
 }

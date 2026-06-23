@@ -12,6 +12,16 @@ class PembayaranIuran extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'id_user',
+        'id_iuran',
+        'id_periode',
+        'tanggal_bayar',
+        'jumlah_bayar',
+        'status_bayar',
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PembayaranIurans;
 
+use App\Filament\Resources\BaseResource;
 use App\Filament\Resources\PembayaranIurans\Pages\CreatePembayaranIuran;
 use App\Filament\Resources\PembayaranIurans\Pages\EditPembayaranIuran;
 use App\Filament\Resources\PembayaranIurans\Pages\ListPembayaranIurans;
@@ -9,12 +10,11 @@ use App\Filament\Resources\PembayaranIurans\Schemas\PembayaranIuranForm;
 use App\Filament\Resources\PembayaranIurans\Tables\PembayaranIuransTable;
 use App\Models\PembayaranIuran;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class PembayaranIuranResource extends Resource
+class PembayaranIuranResource extends BaseResource
 {
     protected static ?string $model = PembayaranIuran::class;
 
@@ -34,9 +34,7 @@ class PembayaranIuranResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
@@ -46,5 +44,15 @@ class PembayaranIuranResource extends Resource
             'create' => CreatePembayaranIuran::route('/create'),
             'edit' => EditPembayaranIuran::route('/{record}/edit'),
         ];
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->role === 'Admin';
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->role === 'Admin';
     }
 }

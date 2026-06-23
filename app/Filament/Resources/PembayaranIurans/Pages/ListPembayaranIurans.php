@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\PembayaranIurans\Pages;
 
 use App\Filament\Resources\PembayaranIurans\PembayaranIuranResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListPembayaranIurans extends ListRecords
@@ -12,8 +12,8 @@ class ListPembayaranIurans extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+    return auth()->user()->can('create PembayaranIuran')
+            ? [Actions\CreateAction::make()]
+            : [];
     }
 }

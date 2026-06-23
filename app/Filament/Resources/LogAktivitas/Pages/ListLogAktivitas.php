@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\LogAktivitas\Pages;
 
 use App\Filament\Resources\LogAktivitas\LogAktivitasResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListLogAktivitas extends ListRecords
@@ -12,8 +12,8 @@ class ListLogAktivitas extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return auth()->user()->can('create LogAktivitas')
+        ? [Actions\CreateAction::make()]
+        : [];
     }
 }

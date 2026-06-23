@@ -14,9 +14,9 @@ class LogAktivitasTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_user')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('id_user')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('aktivitas')
                     ->searchable(),
                 TextColumn::make('waktu_log')
@@ -27,11 +27,13 @@ class LogAktivitasTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update LogAktivitas')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete LogAktivitas')),
                 ]),
             ]);
     }

@@ -1,36 +1,192 @@
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
 
-@config './tailwind.config.js';
+@source '../../../../app/Filament/**/*.php';
+@source '../../../../resources/views/filament/**/*.blade.php';
+@source '../../../../vendor/filament/**/*.blade.php';
 
 /* -------------------------------------------------- */
-/* 1. KUSTOMISASI HALAMAN LOGIN                       */
+/* 1. KUSTOMISASI HALAMAN LOGIN (PREMIUM GLOW)         */
 /* -------------------------------------------------- */
 
-/* Mengubah background halaman login jadi Gradient modern */
+/* Mengubah background halaman login jadi Gradient modern dengan background glows */
+.fi-simple-layout {
+    background-color: #030712 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(220, 192, 112, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.9) 0px, transparent 100%) !important;
+}
+
+.fi-simple-layout::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -10% !important;
+    left: -10% !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 70%) !important;
+    border-radius: 50% !important;
+    filter: blur(100px) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+.fi-simple-layout::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -10% !important;
+    right: -10% !important;
+    width: 500px !important;
+    height: 500px !important;
+    background: radial-gradient(circle, rgba(220, 192, 112, 0.12) 0%, rgba(220, 192, 112, 0) 70%) !important;
+    border-radius: 50% !important;
+    filter: blur(80px) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Membuat Kotak/Card Login menjadi Glassmorphism Premium */
+.fi-simple-main {
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5) !important,
+        inset 0 1px 1px rgba(255, 255, 255, 0.12) !important,
+        inset 0 -1px 1px rgba(0, 0, 0, 0.2) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    padding: 2.5rem 2rem !important;
+}
+
 .fi-simple-page {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%) !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
 }
 
-/* Membuat Kotak/Card Login menjadi Glassmorphism (Efek Kaca) */
-.fi-simple-main-card {
-    border-radius: 20px !important;
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+.fi-simple-main:hover {
+    background: rgba(15, 23, 42, 0.75) !important;
+    border-color: rgba(220, 192, 112, 0.25) !important;
+    box-shadow: 
+        0 30px 60px -10px rgba(0, 0, 0, 0.6) !important,
+        0 0 30px rgba(59, 130, 246, 0.12) !important,
+        inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px) !important;
 }
 
-/* Mengubah warna teks judul di halaman login agar putih bersinar */
+/* Mengubah warna teks judul di halaman login */
+.fi-simple-header {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-bottom: 2rem !important;
+}
+
 .fi-simple-header-heading {
     color: #ffffff !important;
-    font-weight: 800 !important;
-    letter-spacing: -0.05em;
+    font-family: 'Poppins', 'Inter', sans-serif !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    margin-top: 1.25rem !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Mengubah warna label form (Email & Password) di halaman login */
-.fi-fo-field-wrp-label label {
-    color: #cbd5e1 !important;
+/* Logo Styling */
+.fi-simple-header img {
+    filter: drop-shadow(0 4px 12px rgba(0, 50, 145, 0.25)) !important;
+    transition: transform 0.3s ease !important;
 }
+.fi-simple-header img:hover {
+    transform: scale(1.05) !important;
+}
+
+/* Mengubah warna label form (Email & Password) */
+.fi-simple-main label,
+.fi-simple-main .fi-fo-field-wrp-label label {
+    color: #e2e8f0 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* Input Wrappers & Inputs */
+.fi-simple-main .fi-input-wrp {
+    background: rgba(17, 24, 39, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.75rem !important;
+    color: #F8FAFC !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.fi-simple-main .fi-input-wrp:focus-within {
+    border-color: #3b82f6 !important;
+    background: rgba(17, 24, 39, 0.8) !important;
+    box-shadow: 
+        0 0 0 3px rgba(59, 130, 246, 0.2) !important,
+        inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.fi-simple-main input {
+    color: #FFFFFF !important;
+    font-size: 0.875rem !important;
+    padding: 0.625rem 0.875rem !important;
+}
+
+.fi-simple-main input::placeholder {
+    color: #64748B !important;
+}
+
+/* Primary Button / Login Button */
+.fi-simple-main button[type="submit"],
+.fi-simple-main .fi-btn {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: #FFFFFF !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 0.75rem !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25) !important;
+    cursor: pointer !important;
+}
+
+.fi-simple-main button[type="submit"]:hover,
+.fi-simple-main .fi-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 
+        0 6px 20px rgba(59, 130, 246, 0.35) !important,
+        0 0 15px rgba(220, 192, 112, 0.2) !important;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6) !important;
+}
+
+.fi-simple-main button[type="submit"]:active,
+.fi-simple-main .fi-btn:active {
+    transform: translateY(1px) !important;
+}
+
+/* Links & Actions */
+.fi-simple-main a,
+.fi-simple-main .fi-link {
+    color: #d97706 !important;
+    transition: color 0.2s ease !important;
+    font-weight: 500 !important;
+}
+
+.fi-simple-main a:hover,
+.fi-simple-main .fi-link:hover {
+    color: #fbbf24 !important;
+    text-decoration: underline !important;
+}
+
 
 
 /* -------------------------------------------------- */
@@ -45,6 +201,14 @@
     border: 1px solid rgba(0, 0, 0, 0.05) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
     overflow: hidden;
+}
+
+/* Sesuaikan border dan shadow widget di mode gelap */
+.dark .fi-wi-widget, 
+.dark .fi-section, 
+.dark .fi-ta-ctn {
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Memberikan efek gradient soft pada Widget Angka/Statistik */

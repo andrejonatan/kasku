@@ -6,18 +6,20 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages\Dashboard;
+use App\Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,11 +29,13 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('')
+            ->brandLogo(asset('images/logo_kas.png'))
+            ->brandLogoHeight('2.5rem')
             ->login()
-            // --- BERIKUT ADALAH TAMBAHAN UNTUK MODIFIKASI TAMPILAN ---
             ->font('Poppins') // Mengubah font tulisan di seluruh panel (Login & Dashboard)
             ->colors([
-                'primary' => Color::Indigo, // Warna utama (Tombol, link, dll)
+                'primary' => Color::hex('#003291'), // Warna utama (Tombol, link, dll)
                 'gray' => Color::Slate,     // Tone warna latar belakang/Background
             ])
             ->viteTheme('resources/css/filament/admin/theme.css') // Memanggil CSS kustom kita
@@ -45,6 +49,12 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->navigationItems([
+                NavigationItem::make('Kembali ke Website')
+                    ->url(fn (): string => url('/'))
+                    ->icon('heroicon-o-globe-alt')
+                    ->sort(999),
             ])
             ->middleware([
                 EncryptCookies::class,

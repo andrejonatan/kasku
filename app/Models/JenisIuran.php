@@ -9,8 +9,5 @@ class JenisIuran extends Model
     protected $table = 'jenis_iuran';
     protected $primaryKey = 'id_iuran';
     public $timestamps = false;
-    protected $fillable = [
-    'nama_iuran',
-    'nominal',
-    ];
+    protected $guarded = [];
 }

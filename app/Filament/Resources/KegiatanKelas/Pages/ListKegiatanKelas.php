@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\KegiatanKelas\Pages;
 
 use App\Filament\Resources\KegiatanKelas\KegiatanKelasResource;
-use Filament\Actions\CreateAction;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListKegiatanKelas extends ListRecords
@@ -12,8 +12,8 @@ class ListKegiatanKelas extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return auth()->user()->can('create KegiatanKelas')
+        ? [Actions\CreateAction::make()]
+        : [];
     }
 }

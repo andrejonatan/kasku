@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Transaksis\Pages;
 
 use App\Filament\Resources\Transaksis\TransaksiResource;
-use Filament\Actions\DeleteAction;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditTransaksi extends EditRecord
@@ -12,8 +12,8 @@ class EditTransaksi extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return auth()->user()->can('delete Transaksi')
+        ? [Actions\DeleteAction::make()]
+        : [];
     }
 }

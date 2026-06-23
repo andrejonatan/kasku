@@ -15,27 +15,26 @@ class KegiatanKelasTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_kegiatan')
-                    ->sortable(),
+                    // TextColumn::make('id_kegiatan')
+                    //     ->sortable(),
 
                 TextColumn::make('nama_kegiatan')
                     ->searchable(),
 
-                TextColumn::make('tanggal_mulai')
-                    ->date(),
-
-                TextColumn::make('tanggal_selesai')
+                TextColumn::make('tanggal_kegiatan')
                     ->date(),
                     ])
             ->filters([
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn () => auth()->user()->can('update KegiatanKelas')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete KegiatanKelas')),
                 ]),
             ]);
     }

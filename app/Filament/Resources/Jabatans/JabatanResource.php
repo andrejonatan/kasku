@@ -7,14 +7,14 @@ use App\Filament\Resources\Jabatans\Pages\EditJabatan;
 use App\Filament\Resources\Jabatans\Pages\ListJabatans;
 use App\Filament\Resources\Jabatans\Schemas\JabatanForm;
 use App\Filament\Resources\Jabatans\Tables\JabatansTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\Jabatan;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class JabatanResource extends Resource
+class JabatanResource extends BaseResource
 {
     protected static ?string $model = Jabatan::class;
 

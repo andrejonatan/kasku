@@ -7,14 +7,14 @@ use App\Filament\Resources\Periodes\Pages\EditPeriode;
 use App\Filament\Resources\Periodes\Pages\ListPeriodes;
 use App\Filament\Resources\Periodes\Schemas\PeriodeForm;
 use App\Filament\Resources\Periodes\Tables\PeriodesTable;
+use App\Filament\Resources\BaseResource;
 use App\Models\Periode;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class PeriodeResource extends Resource
+class PeriodeResource extends BaseResource
 {
     protected static ?string $model = Periode::class;
 

@@ -9,12 +9,13 @@ use App\Filament\Resources\Transaksis\Schemas\TransaksiForm;
 use App\Filament\Resources\Transaksis\Tables\TransaksisTable;
 use App\Models\Transaksi;
 use BackedEnum;
+use App\Filament\Resources\BaseResource;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class TransaksiResource extends Resource
+class TransaksiResource extends BaseResource
 {
     protected static ?string $model = Transaksi::class;
 

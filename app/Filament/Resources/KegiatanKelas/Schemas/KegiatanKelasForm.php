@@ -18,9 +18,8 @@ class KegiatanKelasForm
 
                 Textarea::make('deskripsi'),
 
-                DatePicker::make('tanggal_mulai'),
-
-                DatePicker::make('tanggal_selesai'),
+                DatePicker::make('tanggal_kegiatan')
+                    ->required(),
             ]);
     }
 }

@@ -15,8 +15,8 @@ class PeriodesTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_periode')
-                    ->sortable(),
+                // TextColumn::make('id_periode')
+                //     ->sortable(),
 
                 TextColumn::make('bulan')
                     ->searchable(),
@@ -28,11 +28,13 @@ class PeriodesTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                ->visible(fn () => auth()->user()->can('update Periode'))
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn () => auth()->user()->can('delete Periode')),
                 ]),
             ]);
     }

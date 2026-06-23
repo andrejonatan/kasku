@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Jabatans\Pages;
 
 use App\Filament\Resources\Jabatans\JabatanResource;
-use Filament\Actions\DeleteAction;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditJabatan extends EditRecord
@@ -12,8 +12,8 @@ class EditJabatan extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return auth()->user()->can('delete Jabatan')
+            ? [Actions\DeleteAction::make()]
+            : [];
     }
 }

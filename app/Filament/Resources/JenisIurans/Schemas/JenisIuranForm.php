@@ -17,6 +17,10 @@ class JenisIuranForm
                 TextInput::make('nominal')
                     ->numeric()
                     ->required(),
+
+                TextInput::make('keterangan')
+                    ->required()
+                    ->maxLength(255),
                 ]);
     }
 }
